@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { APP_INITIALIZER, Injector, NgModule } from '@angular/core';
+// TODO Phase 4: Migrate from @angular/material-moment-adapter to date-fns adapter
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { MarkdownModule } from 'ngx-markdown';

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
 import { SettingsPaneComponent } from './settings-pane.component';
 
@@ -6,7 +6,7 @@ describe('SettingsPaneComponent', () => {
   let component: SettingsPaneComponent;
   let fixture: ComponentFixture<SettingsPaneComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SettingsPaneComponent ]
     })

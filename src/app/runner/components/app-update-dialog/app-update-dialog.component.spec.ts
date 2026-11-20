@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
 import { AppUpdateDialogComponent } from './app-update-dialog.component';
 
@@ -6,7 +6,7 @@ describe('AppUpdateDialogComponent', () => {
   let component: AppUpdateDialogComponent;
   let fixture: ComponentFixture<AppUpdateDialogComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AppUpdateDialogComponent ]
     })

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
 import { ScriptLogComponent } from './script-log.component';
 
@@ -6,7 +6,7 @@ describe('ScriptLogComponent', () => {
   let component: ScriptLogComponent;
   let fixture: ComponentFixture<ScriptLogComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ScriptLogComponent ]
     })

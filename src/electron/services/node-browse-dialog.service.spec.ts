@@ -6,7 +6,7 @@ describe('NodeBrowseDialogService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: NodeBrowseDialogService = TestBed.get(NodeBrowseDialogService);
+    const service: NodeBrowseDialogService = TestBed.inject(NodeBrowseDialogService);
     expect(service).toBeTruthy();
   });
 });
