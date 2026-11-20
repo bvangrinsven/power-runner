@@ -10,6 +10,7 @@ import { IScript, IScriptExit, IScriptFile, ScriptStatus } from '../../app/core/
 import { ScriptFormatter } from '../../app/core/utils/script-formatter';
 import { RunSettings } from '../../app/run-settings';
 import { NodeScriptCacheService } from './node-script-cache.service';
+import { findCodeExecutable, CODE_NOT_FOUND_ERROR } from '../utils/code-editor-resolver';
 
 // Initialize node-pty with an appropriate shell
 const shell = process.env[os.platform() === 'win32' ? 'COMSPEC' : 'SHELL'];
@@ -55,15 +56,31 @@ export class NodeScriptService {
     return scripts;
   }
 
-  public editAsync(script: IScriptFile): Promise<void>  {
+  public editAsync(script: IScriptFile): Promise<void> {
+    const codePath = findCodeExecutable();
+    if (codePath) {
+      spawn(codePath, [`${script.directory}/${script.name}`], {
+        stdio: 'ignore',
+        detached: true
+      });
+      return Promise.resolve();
+    }
 
-    spawn('Code.exe', [`${script.directory}/${script.name}`], {
-      cwd: `${process.env.LOCALAPPDATA}\\Programs\\Microsoft VS Code`, // TODO GBJ: Make compatible with Linux.
-      stdio: 'ignore',
-      detached: true
+    // Fallback: try the 'code' CLI command in PATH
+    return new Promise<void>((resolve, reject) => {
+      const child = spawn('code', [`${script.directory}/${script.name}`], {
+        stdio: 'ignore',
+        detached: true
+      });
+
+      child.on('error', () => {
+        reject(new Error(CODE_NOT_FOUND_ERROR));
+      });
+
+      child.on('spawn', () => {
+        resolve();
+      });
     });
-
-    return Promise.resolve();
   }
 
   public runAsync(script: IScript, runExternal: boolean = false): Promise<string>  {
