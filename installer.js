@@ -1,15 +1,20 @@
-const electronInstaller = require('electron-winstaller');
+const { createWindowsInstaller } = require('@electron/windows-installer');
 
-// SourceRef: https://blog.theodo.com/2017/05/set-up-continuous-deployment-on-electron-using-squirrel/
-electronInstaller.createWindowsInstaller({
-  appDirectory: 'release/PowerRunner-win32-x64',
-  outputDirectory: 'release/installers/PowerRunner-win32-x64',
-  authors: 'Gregg B. Jensen',
-  description: 'PowerShell Script runnner that loads scripts from paths and parses commmand line parameters to present a tabbed form and output window.',
-  exe: 'PowerRunner.exe',
-  noMsi: true
-}).then(()=> {
-  console.info('Installer build complete.');
-}, err => {
-  console.error(`Error creating installer: ${err.message}`);
+async function createInstaller() {
+  const baseDir = process.argv[2] || './release/PowerRunner-win32-x64';
+  const outputDirectory = process.argv[3] || './release/installers';
+
+  await createWindowsInstaller({
+    appDirectory: baseDir,
+    outputDirectory: outputDirectory,
+    exe: 'PowerRunner.exe',
+    setupExe: 'PowerRunnerSetup.exe',
+    setupIcon: undefined,
+    noMsi: true
+  });
+}
+
+createInstaller().catch(err => {
+  console.error('Installer failed:', err);
+  process.exit(1);
 });
