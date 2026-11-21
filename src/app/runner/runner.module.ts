@@ -37,10 +37,6 @@ import { ScriptLogWriterDirective } from './directives/script-log-writer.directi
     AngularSplitModule.forChild(),
     MarkdownModule.forChild()
   ],
-  entryComponents: [
-    AddProfileDialogComponent,
-    AppUpdateDialogComponent
-  ],
   exports: [
     ScriptTreeComponent,
     ScriptFormComponent,

@@ -18,7 +18,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularSplitModule } from 'angular-split';
 import { AutoSizeInputModule } from 'ngx-autosize-input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -31,7 +30,6 @@ import { BrowseDirectoryFieldComponent } from './components';
   ],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatInputModule,

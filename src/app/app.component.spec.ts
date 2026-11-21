@@ -1,8 +1,8 @@
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { TestBed, fakeAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(waitForAsync(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent

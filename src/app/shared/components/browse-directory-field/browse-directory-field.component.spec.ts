@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
 import { BrowseDirectoryFieldComponent } from './browse-directory-field.component';
 
@@ -6,7 +6,7 @@ describe('BrowseDirectoryFieldComponent', () => {
   let component: BrowseDirectoryFieldComponent;
   let fixture: ComponentFixture<BrowseDirectoryFieldComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BrowseDirectoryFieldComponent ]
     })
