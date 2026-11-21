@@ -15,11 +15,7 @@ import { Updater } from './updater';
 unhandled();
 
 const isDev = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase().trim() === 'dev';
-if (isDev) {
-  require('electron-reload')(path.resolve(__dirname, '../../src'), {
-    electron: path.resolve(__dirname, '../../node_modules/.bin/electron')
-  });
-}
+// Note: electron-reload removed (deprecated). Use manual reload or VS Code debugging in dev mode.
 
 // SourceRef: https://angularfirebase.com/lessons/desktop-apps-with-electron-and-angular/
 // SourceRef: https://developer.okta.com/blog/2019/03/20/build-desktop-app-with-angular-electron
